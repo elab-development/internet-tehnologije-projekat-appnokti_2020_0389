@@ -44,5 +44,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('reservations-by-user/{userId}', [ReservationController::class, 'getReservationsByUserId']);
     Route::get('reservations-by-service/{serviceId}', [ReservationController::class, 'getReservationsByServiceId']);
     Route::get('chart-data', [ReservationController::class, 'getReservationsPerSlotTime'])->middleware('admin');
-    Route::post('/logout', [AuthController::class, 'logout'])->middleware('admin');
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
