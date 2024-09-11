@@ -72,6 +72,25 @@ const Reservations = () => {
             .then((response) => {
                 console.log(response.data);
                 setReservations(response.data.data);
+
+                //setCsvData(response.data.data);
+
+                let podaci = response.data.data;
+                let noviNiz = [];
+
+                for (let i = 0; i < podaci.length; i++){
+                    let obj = {
+                        id: i + 1,
+                        name: podaci[i].user.name,
+                        service: podaci[i].service.service_name,
+                        slot: podaci[i].slot.time_slot,
+                        date: podaci[i].reservation_date
+                    }
+                    noviNiz.push(obj);
+                }
+
+                setCsvData(noviNiz);
+
             }).catch((error) => {
                 console.error(error);
             }
