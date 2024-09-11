@@ -3,6 +3,7 @@ import Naslov from "../components/Naslov";
 import {Col, Form, Row, Table} from "react-bootstrap";
 import server from "../server";
 import useForm from "../useForm";
+import { CSVLink } from "react-csv";
 
 const Reservations = () => {
 
@@ -18,6 +19,8 @@ const Reservations = () => {
     const [slots, setSlots] = React.useState([]);
     const [osvezi, setOsvezi] = React.useState(false);
     const [reservations, setReservations] = React.useState([]);
+
+    const [csvData, setCsvData] = React.useState([]);
 
     useEffect(() => {
 
@@ -142,6 +145,15 @@ const Reservations = () => {
                         }
                         </tbody>
                     </Table>
+                    <hr />
+                    <CSVLink
+                        data={csvData}
+                        filename={"moje_rezervacije.csv"}
+                        className="btn yellow-button"
+                        target="_blank"
+                        >
+                        Preuzmite vase podatke
+                     </CSVLink>
                 </Col>
             </Row>
         </>
